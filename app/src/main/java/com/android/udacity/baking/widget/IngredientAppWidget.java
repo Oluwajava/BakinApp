@@ -29,6 +29,7 @@ public class IngredientAppWidget extends AppWidgetProvider {
         SharedPreferences prefs = context.getSharedPreferences(Constants.Keys.shared_preference, Context.MODE_PRIVATE);
         String ingredient = prefs.getString(Constants.Keys.ingredients, null);
 
+
         views.setTextViewText(R.id.appwidget_text, ingredient);
 
         Intent intent = new Intent(context, RecipeActivity.class);

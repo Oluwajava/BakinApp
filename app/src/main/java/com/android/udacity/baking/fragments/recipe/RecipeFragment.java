@@ -75,10 +75,12 @@ public class RecipeFragment extends BaseFragment implements RecipeContract.View{
 
         String text = "";
         for(RecipeIngredients ingredient: recipeList.get(0).getIngredients()) {
-            text.concat(ingredient.getIngredient()+"\n");
+            text += ingredient.getIngredient()+"\n";
         }
         editor.putString(Constants.Keys.ingredients, text);
         editor.commit();
+
+
     }
 
     @Override
