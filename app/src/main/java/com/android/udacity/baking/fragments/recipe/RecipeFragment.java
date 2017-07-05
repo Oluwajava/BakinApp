@@ -35,7 +35,7 @@ public class RecipeFragment extends BaseFragment implements RecipeContract.View{
 
     RecipeContract.Presenter recipePresenter;
 
-    @BindView(R.id.recipe_layout) RecyclerView recipeRecyclerView;
+    @BindView(R.id.recycler_view_recipe_layout) RecyclerView recipeRecyclerView;
     @BindView(R.id.progressBar) ProgressBar progressBar;
 
     public static RecipeFragment newInstance() {

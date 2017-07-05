@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.udacity.baking.R;
@@ -14,6 +15,7 @@ import com.android.udacity.baking.adapter.NavigationListener;
 import com.android.udacity.baking.base.BaseFragment;
 import com.android.udacity.baking.model.RecipeSteps;
 import com.android.udacity.baking.utils.VideoPlayer;
+import com.bumptech.glide.Glide;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
@@ -41,6 +43,8 @@ public class RecipeDetailFragment extends BaseFragment implements RecipeDetailCo
     @BindView(R.id.next)
     @Nullable
     Button next;
+    @BindView(R.id.thumbnail)
+    ImageView thumbnailImageView;
 
     private RecipeDetailContract.Presenter presenter;
     private SimpleExoPlayer mExoPlayer;
@@ -77,6 +81,10 @@ public class RecipeDetailFragment extends BaseFragment implements RecipeDetailCo
                 listener.onNext();
             });
         }
+
+        Glide.with(getActivity()).load(recipeSteps.getThumbnailURL())
+                .into(thumbnailImageView);
+
         return view;
     }
 

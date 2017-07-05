@@ -1,10 +1,14 @@
-package com.android.udacity.baking;
+package com.android.udacity.bakinapp;
 
 
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
+
+import com.android.udacity.baking.R;
+import com.android.udacity.baking.SplashActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,19 +18,18 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class StepTest {
+public class CakeRecipeTest {
 
     @Rule
     public ActivityTestRule<SplashActivity> mActivityTestRule = new ActivityTestRule<>(SplashActivity.class);
 
     @Test
-    public void stepTest() {
+    public void cakeRecipeTest() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -37,25 +40,8 @@ public class StepTest {
         }
 
         ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.recipe_layout), isDisplayed()));
+                allOf(ViewMatchers.withId(R.id.recycler_view_recipe_layout), isDisplayed()));
         recyclerView.perform(actionOnItemAtPosition(0, click()));
-
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(4852);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction recyclerView2 = onView(
-                allOf(withId(R.id.step_recycler_view), isDisplayed()));
-        recyclerView2.perform(actionOnItemAtPosition(1, click()));
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withId(R.id.exo_pause), withContentDescription("Pause"), isDisplayed()));
-        appCompatImageButton.perform(click());
 
     }
 
